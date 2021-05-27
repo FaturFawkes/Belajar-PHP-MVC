@@ -8,7 +8,7 @@
     <link href="<?= BASEURL;  ?>/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container-fluid px-3">
     <a class="navbar-brand" href="<?= BASEURL; ?>">PHP MVC</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -20,6 +20,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?= BASEURL; ?>/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa">Mahasiswa</a>
         </li>
       </ul>
       <form class="d-flex">
