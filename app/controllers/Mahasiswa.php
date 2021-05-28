@@ -9,4 +9,8 @@ class Mahasiswa extends Controller{
         $this->view('mahasiswa/index', $data);
         $this->view('templates/footer');
     }
+
+    public function detail(){
+        
+    }
 }
