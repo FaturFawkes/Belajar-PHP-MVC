@@ -1,22 +1,24 @@
 <?php
 
 class Mahasiswa_model{
-    private $mahasiswa = [
-        [
-            "nis" => "181910349",
-            "nama" => "Nur Fatchurohman",
-            "kelas" => "12",
-            "jurusan" => "Rekayasa Perangkat Lunak"
-        ],
-        [  
-            "nis" => "181910350",
-            "nama" => "Pahlevi Zaqi Shah",
-            "kelas" => "12",
-            "jurusan" => "Teknik Komputer Jaringan"
-        ]
-    ];
+    // database handler
+    private $dbh;
+    private $statement;
+
+    public function __construct(){
+        // data source name
+        $dsn = 'mysql:host=localhost;dbname=mahasiswa';
+
+        try{
+            $this->dbh = new PDO($dsn, 'root', ''); 
+        } catch(PDOExceptioin $e){
+            die($e->getMessage());
+        }
+    }
 
     public function getAllMahasiswa(){
-        return $this->mahasiswa;
+        $this->statement = $this->dbh->prepare('SELECT * FROM data_mahasiswa');
+        $this->statement->execute();
+        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
