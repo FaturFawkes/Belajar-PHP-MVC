@@ -33,7 +33,7 @@ class App{
         }
 
         // Jalankan controller dan method
-        // Kirimkan params jika ada
+        // Kirimkan params jika ada KOmentar versi tolol
 
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
