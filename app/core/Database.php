@@ -8,7 +8,7 @@ class Database{
     private $db_name = DB_NAME;
     // Property Conn
     private $dbh; //database handler
-    private $statement;
+    private $sth;
 
     public function __construct(){
         // data source name
@@ -27,7 +27,7 @@ class Database{
     }
 
     public function query($query){
-        $this->statement = $this->dbh->prepare($query);
+        $this->sth = $this->dbh->prepare($query);
     }
 
     public function bind($param, $value, $type = null){
@@ -44,28 +44,27 @@ class Database{
                     break;
                 default:
                     $type = PDO::PARAM_STR;
-                    break;
             }
         }
-        $this->statement->bindValue($param, $value, $type);
+        $this->sth->bindValue($param, $value, $type);
     }
 
     public function execute(){
-        $this->statement->execute();
+        $this->sth->execute();
     }
 
     public function resultSet(){
         $this->execute();
-        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return $this->sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function single(){
         $this->execute();
-        return $this->statement->fetch(PDO::FETCH_ASSOC);
+        return $this->sth->fetch(PDO::FETCH_ASSOC);
     }
 
     public function rowCount(){
-        return $this->statement->rowCount();
+        return $this->sth->rowCount();
     }
 
 }

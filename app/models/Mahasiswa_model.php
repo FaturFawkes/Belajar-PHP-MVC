@@ -21,17 +21,20 @@ class Mahasiswa_model{
     }
 
     public function tambahDataMahasiswa($data){
-        $query = "INSERT INTO data_mahasiswa VALUES ('', ':nis', ':nama', ':kelas', ':jurusan')";
+        $query = "INSERT INTO `data_mahasiswa` VALUES ('', :nis, :nama, :kelas, :jurusan)";
 
         $this->db->query($query);
         $this->db->bind('nis', $data['nis']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('kelas', $data['kelas']);
         $this->db->bind('jurusan', $data['jurusan']);
-
+        echo ("<script LANGUAGE='JavaScript'>
+            window.alert('Data Sudaha ada');
+            window.location.href='". BASEURL ."/mahasiswa';
+            </script>");
         $this->db->execute();
-
         return $this->db->rowCount();
+        
     }
 
 }
